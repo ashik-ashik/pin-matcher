@@ -2,12 +2,11 @@
  function generatePin(){
   const makePin = Math.random();
   // pin number ke string e convart kori,
-  // // and er moddhe jno latter thake tai base 16 diye dibo
   // than sekhan theke 6 digit cut kore ni... then letter gulake uppercase kore feli
   const pin = makePin.toString().substring(2,8);
   return pin;
  };
-//  display genareted number
+//  display genareted pin
 document.getElementById("generate-pin").addEventListener("click", () => {
   const pin = generatePin();
   document.getElementById("display-pin").value = pin;
@@ -15,10 +14,8 @@ document.getElementById("generate-pin").addEventListener("click", () => {
 
 // type pin
 document.getElementById('number-pad').addEventListener("click", (event) => {
-
   const clickedNumber = event.target.innerText;
   let typedDisplay = document.getElementById('typed-pin');
-
   let buttons = document.getElementsByClassName("button");
   for(btn of buttons){
     if(event.target == btn){
@@ -32,7 +29,6 @@ document.getElementById('number-pad').addEventListener("click", (event) => {
   
 });
 
-
 // matching get pin and typed pin and show matching message
 document.getElementById('varify-pin').addEventListener('click', (e)=> {
   const typedPin = document.getElementById('typed-pin').value;
@@ -45,6 +41,7 @@ document.getElementById('varify-pin').addEventListener('click', (e)=> {
     failedMessage.style.display = "none";
     successMessage.style.display = "block";
     tryLeft.innerText = 3;
+    document.getElementById('typed-pin').value = '';
   }else{
     failedMessage.style.display = "block";
     successMessage.style.display = "none";
@@ -67,7 +64,6 @@ document.getElementById('varify-pin').addEventListener('click', (e)=> {
 // clear last item delete
 
 document.getElementById("clear-one").addEventListener("click", () => {
-  {
     let typedDisplay = document.getElementById('typed-pin');
     // get typed value from typed input field
     let typedVal = typedDisplay.value;
@@ -86,5 +82,4 @@ document.getElementById("clear-one").addEventListener("click", () => {
     // kaj ses uplade kore feli
     typedDisplay.value = deleted;
   
-  }
 });
